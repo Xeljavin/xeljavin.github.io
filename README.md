@@ -1,5 +1,5 @@
-# FR Bro?
+# Wait, is this a website?
 
-So I finally decided to learn HTML (and CSS), and this is my first website.
+Yes, you heard it right. So I finally decided to learn HTML, CSS, and JavaScript to build my own website.
 
-> ngl it was a bit hard to learn it.
+> I may not remember all the syntaxs, but at least I understand how the code fuctions, sort of.
