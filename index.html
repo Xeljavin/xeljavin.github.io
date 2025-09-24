@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Arrival</title>
-  <link rel="icon" href="icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
+     <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">@xeljavin</a>
+            <ul class="nav-links">
+                <li><a href="about.html" data-lang-key="about">About</a></li>
+                <li><a href="stuffs/index.html" data-lang-key="stuffs">Stuffs</a></li>
+                <li><a href="propaganda/index.html" data-lang-key="propaganda">Propaganda</a></li>
+                <li><a href="links.html" data-lang-key="links">Links</a></li>
+            </ul>
+
+            <!-- Buttons -->
+            <div class="nav-buttons">
+            <button id="lang-btn">
+                <img src="assets/icons/lang.svg" alt="Language" />
+            </button>
+            <button id="theme-btn">
+                <img src="assets/icons/theme.svg" alt="Theme" />
+            </button>
+        </div>
+    </nav>
 
 
+    <!-- Banner / Hero Section -->
+    <header class="banner">
+        <div class="banner-content">
+            <h1 data-lang-key="greeting">Hello!</h1>
+            <p data-lang-key="about">Welcome to my personal portfolio</p>
+            <a href="stuffs/index.html" class="btn" data-lang-key="portfolio">View Portfolio</a>
+        </div>
+    </header>
+
+    <script type="module" src="src/main.js"></script>
 </body>
-
 </html>
