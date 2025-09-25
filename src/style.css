@@ -75,10 +75,16 @@ body {
     transform: scale(1.1);
 }
 
-.nav-buttons img {
+/* All nav icons except theme icon */
+.nav-buttons img:not(#theme-icon) {
+    filter: invert(0); /* Light mode: normal */
+}
+
+/* Theme icon stays as-is */
+#theme-icon {
     width: 24px;
     height: 24px;
-    filter: invert(0); /* Dark icons in light mode */
+    filter: none;
 }
 
 /* Language menu */
@@ -170,8 +176,8 @@ body.dark-mode .nav-links li a:hover {
     color: #ff6b6b;
 }
 
-body.dark-mode .nav-buttons img {
-    filter: invert(1); /* Light icons in dark mode */
+body.dark-mode .nav-buttons img:not(#theme-icon) {
+    filter: invert(1); /* Dark mode: inverted for other icons */
 }
 
 body.dark-mode .lang-menu {
