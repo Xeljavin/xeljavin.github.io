@@ -1,41 +1,49 @@
+// src/lang.js
 export async function initLang(defaultLang = "en") {
-    const langBtn = document.getElementById("lang-btn");
-    let currentLang = localStorage.getItem("lang") || defaultLang;
+  const langBtn = document.getElementById("lang-btn");
+  const langMenu = document.getElementById("lang-menu");
+  let currentLang = localStorage.getItem("lang") || defaultLang;
 
-    async function loadLanguage(lang) {
-        try {
-            const res = await fetch(`assets/lang/${lang}.json`);
-            const data = await res.json();
+  async function loadLanguage(lang) {
+    try {
+      const res = await fetch(`assets/lang/${lang}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
 
-            // Update elements with data-key attribute
-            document.querySelectorAll("[data-key]").forEach(el => {
-                const key = el.getAttribute("data-key");
-                if (data[key]) el.textContent = data[key];
-            });
+      // Update elements with data-lang-key attribute
+      document.querySelectorAll("[data-lang-key]").forEach(el => {
+        const key = el.getAttribute("data-lang-key");
+        if (data[key] !== undefined) el.textContent = data[key];
+      });
 
-            currentLang = lang;
-            localStorage.setItem("lang", lang);
-        } catch (e) {
-            console.error("Failed to load language:", lang, e);
-        }
+      // Update <title> if provided
+      if (data.page_title) document.title = data.page_title;
+
+      currentLang = lang;
+      localStorage.setItem("lang", lang);
+    } catch (e) {
+      console.error("Failed to load language:", lang, e);
     }
+  }
 
-    // Handle lang button click to show options
+  // Toggle lang menu (safe guard)
+  if (langBtn && langMenu) {
     langBtn.addEventListener("click", () => {
-        const menu = document.getElementById("lang-menu");
-        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      langMenu.style.display = langMenu.style.display === "flex" ? "none" : "flex";
     });
+  }
 
-    // Handle menu button clicks
-    document.querySelectorAll("#lang-menu button").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const lang = btn.dataset.lang;
-            loadLanguage(lang);
-            document.getElementById("lang-menu").style.display = "none";
-        });
+  // Delegate clicks on the menu (works even if buttons are added later)
+  if (langMenu) {
+    langMenu.addEventListener("click", (ev) => {
+      const btn = ev.target.closest("button[data-lang]");
+      if (!btn) return;
+      const lang = btn.dataset.lang;
+      loadLanguage(lang);
+      langMenu.style.display = "none";
     });
+  }
 
-    // Load initial language
-    await loadLanguage(currentLang);
+  // Load selected language on init
+  await loadLanguage(currentLang);
 }
-
