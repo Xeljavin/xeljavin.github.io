@@ -121,7 +121,7 @@ body {
     padding-top: 60px; /* Push below nav */
     height: 80vh;
     background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-        url('../assets/images/banner.jpg') center/cover no-repeat;
+        url('../assets/images/banner.svg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
