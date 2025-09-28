@@ -1,7 +1,6 @@
 import { initTheme } from "./theme.js";
 import { initLang } from "./lang.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    initTheme();
-    initLang("en"); // default language
-});
+// DOM is already parsed at this point, safe to run immediately
+initTheme();
+initLang("en");
